@@ -1048,7 +1048,7 @@
 
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Cursor
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
@@ -1065,4 +1065,26 @@
     const targetNav = document.getElementById('nav-' + pageId);
 
     if (targetPage) targetPage.classList.add('active');
-    if (targetNa
+    if (targetNav) targetNav.classList.add('active');
+
+    window.scrollTo(0, 0);
+  }
+
+  // Nav link clicks
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const page = a.getAttribute('data-page');
+      if (page) showPage(page);
+    });
+  });
+
+  // CTA button clicks
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      const page = el.getAttribute('data-page');
+      if (page) showPage(page);
+    });
+  });
+</script>
